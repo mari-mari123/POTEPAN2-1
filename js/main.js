@@ -11,11 +11,11 @@
 
   function countUp() {
     const d = new Date(Date.now() - startTime + elapsedTime);
-    const m = String(d.getMinutes()).padStart(1);
-    const s10 = String(d.getSeconds()).padStart(2, '0').slice(0, 1);
-    const s1 = String(d.getSeconds()).padStart(2, '0').slice(1, 2);
+    const h = String(Math.floor(d.getTime()/(1000*60*60))).padStart(1, '0');
+    const m = String(d.getMinutes()).padStart(1, '0');
+    const s = String(d.getSeconds()).padStart(1, '0');
     const ms = String(d.getMilliseconds()).padStart(3, '0').slice(0, 1);
-    timer.textContent = `${m} : ${s10} : ${s1} : ${ms}`;
+    timer.textContent = `${h} : ${m} : ${s} : ${ms}`;
 
     timeoutId = setTimeout(() => {
       countUp();
